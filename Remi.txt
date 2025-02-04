@@ -5,3 +5,6 @@ El comando git reset --hard es destructivo, ya que eliminará todos los cambios 
 
 
 Tenemos que dejar para otra ocasión la parte de las llaves por SSH
+
+
+Sdfvsdfvdsvdf
