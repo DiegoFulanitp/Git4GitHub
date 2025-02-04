@@ -2,3 +2,6 @@ Linea Remi 1
 
 git reset --hard origin/main
 El comando git reset --hard es destructivo, ya que eliminará todos los cambios locales no guardados y sobrescribirá tu directorio de trabajo con el estado del repositorio remoto. Asegúrate de que no tienes cambios importantes que no hayas guardado antes de ejecutarlo.
+
+
+Tenemos que dejar para otra ocasión la parte de las llaves por SSH
