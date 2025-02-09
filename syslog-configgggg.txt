@@ -1,0 +1,29 @@
+! Entrar al modo de configuración
+configure terminal
+
+! Habilitar el servicio de Syslog
+feature logging
+
+! Configurar el servidor Syslog remoto
+logging host 192.168.1.200
+
+! Configurar el nivel de severidad de los logs (del 0 al 7)
+! 0 = Emergencias (más crítico), 7 = Depuración (menos crítico)
+logging trap informational
+
+! Configurar el origen de los mensajes de Syslog (opcional, si se desea personalizar la IP origen)
+logging source-interface Vlan10
+
+! Configurar la retención de los logs en el switch (en memoria)
+logging buffered 4096 severity informational
+
+! Configurar la rotación de logs (opcional)
+logging file /var/log/syslog
+
+! Configurar la ubicación física del equipo
+snmp-server location "Rack 3, Switch Nexus 9300"
+
+! Configurar el contacto del administrador
+snmp-server contact "admin@miempresa.com"
+
+exit
