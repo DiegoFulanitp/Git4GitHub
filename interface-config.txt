@@ -21,7 +21,7 @@ exit
 
 ! Configurar VLANs
 vlan 10
-  name BGP_LINK_1
+  name BGP_LINK_1-Per-Nota
 vlan 20
   name BGP_LINK_2
 vlan 30
