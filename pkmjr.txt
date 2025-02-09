@@ -1,1 +1,0 @@
-Esta linea debería generar un conflicto

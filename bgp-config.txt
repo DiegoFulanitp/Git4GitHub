@@ -1,0 +1,26 @@
+! Entrar al modo de configuración
+configure terminal
+
+! Configurar BGP con el número de AS local
+router bgp 65001
+
+! Configurar el router ID (usualmente la IP de loopback o una IP estable)
+  bgp router-id 1.1.1.1
+
+! Agregar un vecino BGP con su AS remoto
+  neighbor 192.168.1.2 remote-as 65002
+
+! Activar la sesión BGP en la familia de direcciones IPv4
+  address-family ipv4 unicast
+    network 10.10.10.0/24
+    network 192.168.1.0/24
+  exit-address-family
+
+! Opcional: Configurar keepalive y hold time
+  timers bgp 60 180
+
+! Opcional: Permitir rutas sin verificar la NEXT_HOP (para pruebas)
+  no bgp enforce-first-as
+
+! Salir de la configuración
+exit

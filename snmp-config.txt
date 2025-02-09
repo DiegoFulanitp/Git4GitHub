@@ -1,0 +1,22 @@
+! Entrar al modo de configuración
+configure terminal
+
+! Habilitar SNMPv2c
+feature snmp
+
+! Configurar comunidad de lectura (read-only) para SNMPv2c
+snmp-server community public ro
+
+! Configurar comunidad de escritura (read-write) para SNMPv2c
+snmp-server community private rw
+
+! Configurar la dirección del servidor SNMP (gestor)
+snmp-server host 192.168.1.100 version 2c public
+
+! Configurar ubicación del dispositivo
+snmp-server location "Rack 3, Switch Nexus 9300"
+
+! Configurar contacto del administrador
+snmp-server contact "admin@miempresa.com"
+
+exit

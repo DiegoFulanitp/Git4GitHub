@@ -1,0 +1,25 @@
+! Entrar al modo de configuración
+configure terminal
+
+! Configurar el Banner MOTD con mensaje corporativo y ASCII "SPIN"
+banner motd #
+******************************************************************
+*  ____  ____  ___ _   _                                         *
+* / ___||  _ \|_ _| \ | |  Switch Cisco Nexus 9300               *
+* \___ \| |_) || ||  \| |  Uso exclusivo para personal autorizado*
+*  ___) |  _ / | || |\  |  Todo acceso será monitoreado.         *
+* |____/|_|   \___|_| \_|                                        *
+*                                                                *
+******************************************************************
+#
+
+! Configurar el Banner de Login con advertencia de seguridad
+banner login #
+***************************************************************
+*   Bienvenido al Sistema de Administración del Switch SPIN   *
+*   Solo personal autorizado puede acceder a este equipo.     *
+*   Todo intento de acceso no autorizado será registrado.     *
+***************************************************************
+#
+
+exit

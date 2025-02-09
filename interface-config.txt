@@ -1,0 +1,54 @@
+! Entrar al modo de configuración
+configure terminal
+
+! Habilitar el protocolo BGP
+router bgp 65001
+  bgp router-id 1.1.1.1
+
+  ! Configurar vecino en VLAN 10
+  neighbor 10.1.1.2 remote-as 65002
+
+  ! Configurar vecino en VLAN 20
+  neighbor 10.2.2.2 remote-as 65002
+
+  ! Activar la familia de direcciones IPv4 para intercambio de rutas
+  address-family ipv4 unicast
+    network 10.1.1.0/24
+    network 10.2.2.0/24
+  exit-address-family
+
+exit
+
+! Configurar VLANs
+vlan 10
+  name BGP_LINK_1
+vlan 20
+  name BGP_LINK_2
+vlan 30
+  name LAN_INTERNAL
+
+! Configurar Interfaces Virtuales SVI
+
+interface Vlan10
+  ip address 10.1.1.1/24
+  no shutdown
+  description **BGP Peer Link 1**
+
+interface Vlan20
+  ip address 10.2.2.1/24
+  no shutdown
+  description **BGP Peer Link 2**
+
+interface Vlan30
+  ip address 10.3.3.1/24
+  no shutdown
+  description **Internal LAN Interface**
+
+! Configurar una interfaz física para la LAN (por ejemplo, Ethernet1/3)
+interface Ethernet1/3
+  switchport mode access
+  switchport access vlan 30
+  description **LAN Connection**
+  no shutdown
+
+exit

@@ -1,0 +1,37 @@
+! Entrar al modo de configuración
+configure terminal
+
+! Configurar un nombre de dominio (obligatorio para SSH)
+ip domain-name miempresa.com
+
+! Generar claves RSA para SSH (longitud recomendada 2048 bits o más)
+crypto key generate rsa modulus 2048
+
+! Configurar el servidor SSH para permitir conexiones v2
+feature ssh
+ssh key rsa 2048 force
+ssh server v2
+
+! Configurar un usuario administrativo con privilegios 15
+username admin password 0 MiPasswordSeguro
+username admin role network-admin
+
+! Configurar líneas VTY (líneas virtuales para acceso remoto)
+line vty
+  transport input ssh
+  exec-timeout 10   ! Tiempo de inactividad antes de desconectar la sesión (minutos)
+  session-limit 5    ! Límite de sesiones simultáneas
+  login local        ! Usa la base de datos local de usuarios
+exit
+
+! Opcional: Restringir el acceso SSH solo a ciertas IPs
+ip access-list SSH-ACL
+  permit ip 192.168.1.0/24 any
+  deny ip any any log
+
+line vty
+  ip access-group SSH-ACL in
+exit
+
+! Salir de la configuración
+exit
