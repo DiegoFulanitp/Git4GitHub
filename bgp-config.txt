@@ -5,6 +5,7 @@ configure terminal
 router bgp 65001
 
 ! Configurar el router ID (usualmente la IP de loopback o una IP estable)
+
   bgp router-id 1.1.1.8
 
 ! Agregar un vecino BGP con su AS remoto
