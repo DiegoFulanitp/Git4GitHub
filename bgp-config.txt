@@ -6,7 +6,7 @@ router bgp 65001
 
 ! Configurar el router ID (usualmente la IP de loopback o una IP estable)
 
-  bgp router-id 1.1.1.8
+  bgp router-id 1.1.1.9
 
 ! Agregar un vecino BGP con su AS remoto
   neighbor 192.168.1.2 remote-as 65002
@@ -15,6 +15,7 @@ router bgp 65001
   address-family ipv4 unicast
     network 10.10.10.0/24
     network 192.168.1.0/24
+    network 192.168.2.0/24
   exit-address-family
 
 ! Opcional: Configurar keepalive y hold time
